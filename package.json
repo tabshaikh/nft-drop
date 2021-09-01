@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "my-dapp-template",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "react-app": "yarn workspace react-app",
+    "hardhat": "yarn workspace hardhat",
+    "chain": "yarn workspace hardhat chain"
+  }
+}
