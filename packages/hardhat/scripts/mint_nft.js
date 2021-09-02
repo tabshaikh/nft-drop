@@ -16,10 +16,12 @@ async function main() {
 
   const Nft = await ethers.getContractFactory("Nft");
   const nft = await Nft.attach(
-    "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0" // The deployed contract address
+    "0x4c5859f0F772848b2D91F1D83E2Fe57935348029" // The deployed contract address
   );
 
-  // console.log(nft);
+  console.log(
+    "------------------- MINTING -------------------------------------"
+  );
 
   // Returning the owner of the contract
   const OWNER = await nft.owner();
@@ -30,10 +32,9 @@ async function main() {
   const tokenIdString = tokenId.toString();
 
   //   console.log(nft);
-  await nft.mintItem(
-    accounts[1].address,
+  await nft.connect(accounts[1]).mintItem(
     "QmQD9mHT3Xja1Yajufo1b7uDTHHFLicZNhgF1HS1UxfY8k",
-    { from: OWNER } // the path of the json uri which is uploaded to ipfs we use _setBaseURI("https://ipfs.io/ipfs/"); there not the complete path needed
+    { from: accounts[1].address } // the path of the json uri which is uploaded to ipfs we use _setBaseURI("https://ipfs.io/ipfs/"); there not the complete path needed
   );
 
   console.log(
@@ -41,6 +42,85 @@ async function main() {
     accounts[1].address,
     "with token id:",
     tokenIdString
+  );
+
+  console.log(
+    "--------------------------------------------------------------------------"
+  );
+
+  console.log(
+    "------------------- PAUSING -------------------------------------"
+  );
+
+  await nft.pause({ from: OWNER });
+
+  console.log("Trying Minting ...");
+
+  await nft
+    .connect(accounts[1])
+    .mintItem(
+      "QmQD9mHT3Xja1Yajufo1b7uDTHHFLicZNhgF1HS1UxfY8k",
+      { from: accounts[1].address } // the path of the json uri which is uploaded to ipfs we use _setBaseURI("https://ipfs.io/ipfs/"); there not the complete path needed
+    )
+    .catch((error) => {
+      console.error(error);
+    });
+
+  await nft.unpause({ from: OWNER });
+
+  console.log(
+    "------------------------ UNPAUSING Mint Function ------------------------------------"
+  );
+
+  console.log(
+    "------------------- Blacklisting Account ",
+    accounts[1].address,
+    " -------------------------------------"
+  );
+
+  await nft.blacklist(accounts[1].address);
+
+  console.log("Trying to mint nft to account:", accounts[1].address);
+
+  await nft
+    .connect(accounts[1])
+    .mintItem(
+      "QmQD9mHT3Xja1Yajufo1b7uDTHHFLicZNhgF1HS1UxfY8k",
+      { from: accounts[1].address } // the path of the json uri which is uploaded to ipfs we use _setBaseURI("https://ipfs.io/ipfs/"); there not the complete path needed
+    )
+    .catch((error) => {
+      console.error(error);
+    });
+
+  console.log(
+    "--------------------------------------------------------------------------"
+  );
+
+  console.log(
+    "------------------- Removing Blacklisted Account ",
+    accounts[1].address,
+    " -------------------------------------"
+  );
+
+  await nft.removeFromblacklist(accounts[1].address);
+
+  console.log("Trying to mint nft to account:", accounts[1].address);
+
+  const tokenId1 = await nft.tokenCounter();
+  const tokenIdString1 = tokenId1.toString();
+
+  //   console.log(nft);
+  await nft
+    .connect(accounts[1])
+    .mintItem("QmQD9mHT3Xja1Yajufo1b7uDTHHFLicZNhgF1HS1UxfY8k", {
+      from: accounts[1].address,
+    });
+
+  console.log(
+    "Minted NFT for account: ",
+    accounts[1].address,
+    "with token id:",
+    tokenIdString1
   );
 }
 
