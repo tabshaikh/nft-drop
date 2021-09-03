@@ -6,7 +6,10 @@
   ],
   "scripts": {
     "react-app": "yarn workspace react-app",
+    "start": "yarn react-app start",
     "hardhat": "yarn workspace hardhat",
-    "chain": "yarn workspace hardhat chain"
+    "chain": "yarn workspace hardhat chain",
+    "compile": "yarn workspace hardhat compile",
+    "deploy": "yarn workspace hardhat deploy-nft"
   }
 }
