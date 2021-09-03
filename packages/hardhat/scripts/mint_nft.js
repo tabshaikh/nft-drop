@@ -16,7 +16,7 @@ async function main() {
 
   const Nft = await ethers.getContractFactory("Nft");
   const nft = await Nft.attach(
-    "0x4c5859f0F772848b2D91F1D83E2Fe57935348029" // The deployed contract address
+    "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1" // The deployed contract address
   );
 
   console.log(

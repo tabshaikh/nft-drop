@@ -24,9 +24,6 @@ async function main() {
   await nft.deployed();
 
   console.log("Nft address (Paste this address in mint_nft.js):", nft.address);
-
-  // We also save the contract's artifacts and address in the frontend directory
-  //   saveFrontendFiles(greeter);
 }
 
 main()
