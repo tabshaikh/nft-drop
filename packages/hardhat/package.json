@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chain": "hardhat node",
+    "chain": "npx hardhat node",
+    "compile": "npx hardhat compile",
     "deploy": "hardhat run scripts/deploy.js --network localhost",
     "deploy-nft": "hardhat run scripts/deploy_nft.js --network localhost",
     "mint-nft": "hardhat run scripts/mint_nft.js --network localhost",
