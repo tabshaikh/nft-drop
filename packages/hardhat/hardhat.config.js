@@ -19,4 +19,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.6.11",
+  paths: {
+    artifacts: "../react-app/src/contracts/artifacts",
+  },
+  networks: {
+    // add additional networks here
+    hardhat: {
+      chainId: 1337, // specific to how hardhat works
+    },
+  },
 };
