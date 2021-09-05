@@ -26,3 +26,5 @@ packages/react-app/.env.production.local
 packages/react-app/npm-debug.log*
 packages/react-app/yarn-debug.log*
 packages/react-app/yarn-error.log*
+
+.env
