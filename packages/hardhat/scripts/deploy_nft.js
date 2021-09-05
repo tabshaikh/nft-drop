@@ -24,6 +24,22 @@ async function main() {
   await nft.deployed();
 
   console.log("Nft address (Paste this address in mint_nft.js):", nft.address);
+
+  saveDeployedAddress(nft);
+}
+
+function saveDeployedAddress(nft) {
+  const fs = require("fs");
+  const contractsDir = __dirname + "/../../react-app/src/contracts";
+
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir);
+  }
+
+  fs.writeFileSync(
+    contractsDir + "/contract-address.json",
+    JSON.stringify({ Nft: nft.address }, undefined, 2)
+  );
 }
 
 main()
