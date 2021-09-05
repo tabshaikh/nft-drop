@@ -73,6 +73,8 @@ body {
   background-color: var(--clr-grey-7);
   color: var(--clr-grey-1);
   font-size: 0.875rem;
+  background-image: url("wave-haikei.png");
+  background-size: cover;
 }
 ul {
   list-style-type: none;
