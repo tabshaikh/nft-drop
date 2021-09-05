@@ -246,6 +246,10 @@ function App() {
       </Navbar>
       {/* ------------------------------------------------------------------------ */}
 
+      <div class="hero-text">
+        <h2>Send your friend's an NFT 🚀</h2>
+      </div>
+
       <div className="app-container">
         <Container className="mint">
           <Form>
