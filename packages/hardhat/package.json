@@ -9,7 +9,7 @@
     "deploy": "hardhat run scripts/deploy.js --network localhost",
     "deploy-nft": "hardhat run scripts/deploy_nft.js --network localhost",
     "mint-nft": "hardhat run scripts/mint_nft.js --network localhost",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx hardhat test"
   },
   "keywords": [],
   "author": "",

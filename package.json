@@ -10,6 +10,7 @@
     "hardhat": "yarn workspace hardhat",
     "chain": "yarn workspace hardhat chain",
     "compile": "yarn workspace hardhat compile",
-    "deploy": "yarn workspace hardhat deploy-nft"
+    "deploy": "yarn workspace hardhat deploy-nft",
+    "test": "yarn workspace hardhat test"
   }
 }
