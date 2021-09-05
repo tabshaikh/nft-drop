@@ -28,3 +28,5 @@ packages/react-app/yarn-debug.log*
 packages/react-app/yarn-error.log*
 
 .env
+
+packages/react-app/.netlify/
