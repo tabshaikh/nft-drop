@@ -16,6 +16,23 @@ contract Nft is ERC721, Ownable, Pausable {
         tokenCounter = 1;
     }
 
+    function mintItemToAdress(address to, string memory tokenURI)
+        public
+        whenNotPaused
+        onlyOwner
+        returns (uint256)
+    {
+        require(blackList[to] == false, "Account blacklisted");
+
+        uint256 id = tokenCounter;
+        _mint(to, id);
+        _setTokenURI(id, tokenURI);
+
+        tokenCounter = tokenCounter + 1;
+
+        return id;
+    }
+
     function mintItem(string memory tokenURI)
         public
         whenNotPaused
